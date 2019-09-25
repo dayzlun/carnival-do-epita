@@ -1,103 +1,46 @@
 <?php
 
 namespace Hackathon\PlayerIA;
-
 use Hackathon\Game\Result;
 
 /**
- * Class Player
+ * Class PaperPlayer
  * @package Hackathon\PlayerIA
+ * @author Robin
  *
- * This abstract class give a panel of function
- * You don't have to override functions expect getChoice
  */
-abstract class Player
+class DayzlunPlayer extends Player
 {
-    /**
-     * Stupid Function -- The only one, you can override !
-     */
-    protected function getChoice()
-    {
-        return $this->rockChoice();
-    }
+    protected $mySide;
+    protected $opponentSide;
+    protected $result;
 
-    /**
-     * You don't need this function
-     * @DON'T OVERRIDE
-     */
-    public function getName()
+    public function getChoice()
     {
-        return str_replace('Hackathon\\IA\\', "", str_replace("Player", "", get_class($this)));
-    }
-
-    /**
-     * This function tells you, if you are 'a' or 'b'
-     * @DON'T OVERRIDE
-     */
-    public function getSide()
-    {
-        return $this->side;
-    }
-
-    /**
-     * @param $side - The value can be 'a' or 'b'
-     * --> The Engine sets this value for you
-     * @DON'T OVERRIDE
-     */
-    public function setSide($side)
-    {
-        $this->mySide = $side;
-        $this->opponentSide = ($side === 'a') ? 'b' : 'a';
-    }
-
-    /**
-     * @param $result - value of the last result (in an object)
-     * --> The Engine update this value for you
-     * @DON'T OVERRIDE
-     */
-    public function updateResult(Result $result)
-    {
-        $this->result = $result;
-    }
-
-    /**
-     * @return string 'scissors'
-     * @DON'T OVERRIDE
-     */
-    public function scissorsChoice()
-    {
-        return 'scissors';
-    }
-
-    /**
-     * @return string 'paper'
-     * @DON'T OVERRIDE
-     */
-    public function paperChoice()
-    {
-        return 'paper';
-    }
-
-    /**
-     * @return string 'rock'
-     * @DON'T OVERRIDE
-     */
-    public function rockChoice()
-    {
-        return 'rock';
-    }
-
-    /**
-     * @DON'T OVERRIDE
-     * This function helps you to debug
-     */
-    protected function prettyDisplay()
-    {
-        $myStat= $this->result->getStatsFor($this->mySide);
-        $oppoStat= $this->result->getStatsFor(($this->opponentSide));
-
-        echo "(", $this->result->getNbRound(), ") Last round ", $myStat['name'], " plays ", $this->result->getLastChoiceFor($this->mySide), " \t ",
-                                                                $oppoStat['name'], " plays ", $this->result->getLastChoiceFor($this->opponentSide), PHP_EOL, "\t",
-            $myStat['name'], " :  ", $this->result->getLastScoreFor($this->mySide), " \t ", $oppoStat['name'], " : ", $this->result->getLastScoreFor($this->opponentSide), PHP_EOL;
-    }
+        // -------------------------------------    -----------------------------------------------------
+        // How to get my Last Choice           ?    $this->result->getLastChoiceFor($this->mySide) -- if 0 (first round)
+        // How to get the opponent Last Choice ?    $this->result->getLastChoiceFor($this->opponentSide) -- if 0 (first round)
+        // -------------------------------------    -----------------------------------------------------
+        // How to get my Last Score            ?    $this->result->getLastScoreFor($this->mySide) -- if 0 (first round)
+        // How to get the opponent Last Score  ?    $this->result->getLastScoreFor($this->opponentSide) -- if 0 (first round)
+        // -------------------------------------    -----------------------------------------------------
+        // How to get all the Choices          ?    $this->result->getChoicesFor($this->mySide)
+        // How to get the opponent Last Choice ?    $this->result->getChoicesFor($this->opponentSide)
+        // -------------------------------------    -----------------------------------------------------
+       // How to get my Last Score            ?    $this->result->getLastScoreFor($this->mySide)
+        // How to get the opponent Last Score  ?    $this->result->getLastScoreFor($this->opponentSide)
+        // -------------------------------------    -----------------------------------------------------
+        // How to get the stats                ?    $this->result->getStats()
+        // How to get the stats for me         ?    $this->result->getStatsFor($this->mySide)
+        //          array('name' => value, 'score' => value, 'friend' => value, 'foe' => value
+        // How to get the stats for the oppo   ?    $this->result->getStatsFor($this->opponentSide)
+        //          array('name' => value, 'score' => value, 'friend' => value, 'foe' => value
+        // -------------------------------------    -----------------------------------------------------
+        // How to get the number of round      ?    $this->result->getNbRound()
+        // -------------------------------------    -----------------------------------------------------
+        // How can i display the result of each round ? $this->prettyDisplay()
+        // -------------------------------------    -----------------------------------------------------
+        
+        return parent::paperChoice();            
+  }
 };
