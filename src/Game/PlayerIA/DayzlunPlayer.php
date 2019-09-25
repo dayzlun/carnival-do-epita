@@ -61,7 +61,7 @@ class DayzlunPlayer extends Player
 
       if ($nbRound > 1 && $hischoices[$nbRound - 1] == $hischoices[$nbRound - 2])
       {
-        return (getanotherChoice($hischoices[$nbRound-2]));
+        return (getWinningChoice(getanotherChoice($hischoices[$nbRound-2])));
       }
 
 
