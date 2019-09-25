@@ -106,6 +106,6 @@ class DayzlunPlayer extends Player
         // How can i display the result of each round ? $this->prettyDisplay()
         // -------------------------------------    -----------------------------------------------------
         
-        return parent::rockChoice();            
+        return parent::scissorsChoice();            
   }
 };
