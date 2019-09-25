@@ -68,7 +68,7 @@ class DayzlunPlayer extends Player
       if ($mylastScore > 1)
         return $mylastchoice;
       else 
-        return getWinningChoice($hislastchoice);
+        return getWinningChoice($mylastchoice);
 
       
      
