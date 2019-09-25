@@ -20,13 +20,21 @@ function getWinningChoice($choice)
     return 'paper';
 }
 
+
+function getanotherChoice($choice)
+{
+  $choices['rock'] = 'scissors';
+  $choices['paper'] = 'rock';
+  $choices['scissors'] = 'paper';
+  return $choices[$choice];
+}
+
+
 class DayzlunPlayer extends Player
 {
     protected $mySide;
     protected $opponentSide;
     protected $result;
-
-
 
     public function getChoice()
     {
@@ -45,17 +53,26 @@ class DayzlunPlayer extends Player
 
       $nbRound = $this->result->getNbRound();
 
+      //print($mylastScore);
+      
+      //print($hischoices);
+      //print('/n');
+    
+
+      if ($nbRound > 1 && $hischoices[$nbRound - 1] == $hischoices[$nbRound - 2])
+      {
+        return (getanotherChoice($hischoices[$nbRound-2]));
+      }
+
+
+      // Si je gagne, je continue de jouer la même main sinon je change
       if ($mylastScore > 1)
         return $mylastchoice;
       else 
         return getWinningChoice($mylastchoice);
 
       
-      //print($mylastScore);
-      //print($stats);
-
-      
-     // print("\n");
+     
    /*   print($hislastchoice) ;
       print($hislastchoice) ;
       print($hislastchoice) ;
