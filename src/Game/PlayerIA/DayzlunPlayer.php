@@ -64,12 +64,11 @@ class DayzlunPlayer extends Player
         return (getWinningChoice(getanotherChoice($hischoices[$nbRound-2])));
       }
 
-
       // Si je gagne, je continue de jouer la même main sinon je change
       if ($mylastScore > 1)
         return $mylastchoice;
       else 
-        return getWinningChoice($mylastchoice);
+        return getWinningChoice($hislastchoice);
 
       
      
@@ -101,6 +100,6 @@ class DayzlunPlayer extends Player
         // How can i display the result of each round ? $this->prettyDisplay()
         // -------------------------------------    -----------------------------------------------------
         
-        return parent::paperChoice();            
+        return parent::rockChoice();            
   }
 };
