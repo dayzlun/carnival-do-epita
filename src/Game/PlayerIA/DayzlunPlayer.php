@@ -54,21 +54,17 @@ class DayzlunPlayer extends Player
       $nbRound = $this->result->getNbRound();
 
       //----------------------------------------------------------------------
-      // Bonjour, je tiens à préciser que je n'ai jamais fait de php,
-
-
+      // Bonjour, je tiens à préciser que je n'ai jamais fait de php, donc j'ai
+      // fait un truc simple, basique.
       //----------------------------------------------------------------------
 
-      //print($mylastScore);
-      
-      //print($hischoices);
-      //print('/n');
-    
 
-      if ($nbRound > 1 && $hischoices[$nbRound - 1] == $hischoices[$nbRound - 2])
-      {
-        return (getWinningChoice($hischoices[$nbRound-2]));
-      }
+
+      //ça ne marche que contre les humains.... :(
+      //if ($nbRound > 1 && $hischoices[$nbRound - 1] == $hischoices[$nbRound - 2])
+      //{
+      //  return (getWinningChoice($hischoices[$nbRound-2]));
+      //}
 
       // Si je gagne, je continue de jouer la même main sinon je change
       if ($mylastScore > 1)
